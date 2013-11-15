@@ -7,7 +7,7 @@ So now you can just write the markup, use the plugin, copy/paste in your css fil
 
 
 example:
-<pre>
+```html
 	<div class="parent a"> 
 		<div class="php">
 		  <a><img/></a>
@@ -34,4 +34,4 @@ example:
 	  .parent.a .field p{}
 	  
 	</script>
-</pre>
+```
