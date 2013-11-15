@@ -7,7 +7,7 @@ So now you can just write the markup, use the plugin, copy/paste in your css fil
 
 
 example:
-<code>
+<pre>
 	<div class="parent a"> 
 		<div class="php">
 		  <a><img/></a>
@@ -17,20 +17,21 @@ example:
 		  <p>lorem ipsum</p>
 		</div>
 	</div>
-</code>
 
-<script>
-  
-  jQuery('.parent.a').cssGenerator()
-  //outputs in console
-  .parent.a{}
-  .parent.a .php{}
-  .parent.a .php a{}
-  .parent.a .php a img{}
-  .parent.a .title{}
-  .parent.a .title h1{}
-  .parent.a .title h1{}
-  .parent.a .field{}
-  .parent.a .field p{}
-  
-</script>
+
+	<script>
+	  
+	  jQuery('.parent.a').cssGenerator()
+	  //outputs in console
+	  .parent.a{}
+	  .parent.a .php{}
+	  .parent.a .php a{}
+	  .parent.a .php a img{}
+	  .parent.a .title{}
+	  .parent.a .title h1{}
+	  .parent.a .title h1{}
+	  .parent.a .field{}
+	  .parent.a .field p{}
+	  
+	</script>
+</pre>
