@@ -47,17 +47,44 @@
                 start_from_element:false
             }, options );
 
+                Selectors={
+                  get_classes:function(element){
+                    arr = element.attr('class').split(/\s+/);
+                    brr = [];
+                    for(a in arr){
+                      if(arr[a]!=''){
+                        brr.push(arr[a]);
+                      }
+                    }
+                    return '.'+brr.join('.')+' ';
+                  },
+                  get_id:function(element){
+                    return '#'+element.attr('id')+' ';
+                  },
+                  get_tag:function(element){
+                    return element[0].tagName.toLowerCase()+' ';
+                  },
+                  get_input_type:function(element){
+
+                  }
+
+                };
+
             		get_selector = function(element){
             			new_base = '';
-            			if( element.attr('class') || element.attr('id') ) {
+            			if( (typeof element.attr('class') != 'undefined') || (typeof element.attr('id') != 'undefined')  ) {
                     if( element.attr('id') && settings.prefer_ids_over_class) {
-                        new_base = '#' + element.attr('id')+' ';
+                        new_base = Selectors.get_id(element);
                     }else{
-                        new_base = '.' + element.attr('class').split(' ').join('.')+' ';
+                        if(typeof element.attr('class') != 'undefined'){
+                          new_base = Selectors.get_classes(element);
+                        }else{
+                          new_base = Selectors.get_tag(element);
+                        }
                     }
                   }else{
                     if( typeof element.context == 'object' || typeof element[0].tagName != 'undefined' ){
-                        new_base = element[0].tagName.toLowerCase()+' ';
+                          new_base = Selectors.get_tag(element);
                     }
                   }
                   return new_base;
