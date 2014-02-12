@@ -3,7 +3,8 @@ jquery-css-generator
 
 Tired of writing css? 
 A jQuery plugin for getting a clean formatted css markup for your html.
-So now you can just write the markup, use the plugin, copy/paste in your css file, inspect and style!!!
+So now you can just write the markup, use the example generator or the plugin, 
+copy/paste in your css file, inspect and style!!!
 
 
 example:
