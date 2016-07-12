@@ -1,4 +1,4 @@
-jquery-css-generator
+css generator
 ====================
 
 Tired of writing css? 
