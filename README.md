@@ -36,3 +36,21 @@ example:
 	  
 	</script>
 ```
+
+## TODO
+
+* package as node app
+* implement https://ace.c9.io as an editor
+* watch a local/remote file
+* watch a remote URL 
+* save to local 
+
+
+
+
+
+
+
+
+
+
