@@ -1,9 +1,10 @@
 css generator
 ====================
 
-Tired of writing CSS?
+Tired of writing CSS or SASS?
 
 Generate clean CSS markup for your App based on the HTML markup.
+
 
 
 ```
@@ -51,12 +52,14 @@ using the plugin directly:
 * some tags cause errors
 * form elements cleanup
 * package as node app
-   * file import + watch local/remote
+   * file import + watch (output change - inspector saves) (local/remote - changes)
    * url "watching"
    * save to local
+   * keyboard shortcuts
    * branding
 * implement https://ace.c9.io as an editor
-
+* "Inception Rule" don't go too deep
+* AutoCleaner
 
 
 
