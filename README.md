@@ -2,8 +2,9 @@ css generator
 ====================
 
 Tired of writing css?
-Get clean formatted css markup for your html.
-Write the markup, use generator, copy/paste in your css file, inspect and style!
+
+Generate clean CSS markup for your App based on the HTML markup.
+
 
 ```
 # Clone
