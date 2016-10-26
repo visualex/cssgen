@@ -1,7 +1,7 @@
 css generator
 ====================
 
-Tired of writing css?
+Tired of writing CSS?
 
 Generate clean CSS markup for your App based on the HTML markup.
 
