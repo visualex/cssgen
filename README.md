@@ -18,7 +18,7 @@ $ cd css-generator
 $ npm install && npm start
 ```
 
-using the plugin directly:
+For the following markup:
 ```html
 	<div class="parent a">
 		<div class="php">
@@ -29,23 +29,19 @@ using the plugin directly:
 		  <p>lorem ipsum</p>
 		</div>
 	</div>
+```
 
-
-	<script>
-
-	  jQuery('.parent.a').cssGenerator()
-	  //outputs in console
-	  .parent.a{}
-	  .parent.a .php{}
-	  .parent.a .php a{}
-	  .parent.a .php a img{}
-	  .parent.a .title{}
-	  .parent.a .title h1{}
-	  .parent.a .title h1{}
-	  .parent.a .field{}
-	  .parent.a .field p{}
-
-	</script>
+Get this output: 
+```CSS
+	.parent.a{}
+	.parent.a .php{}
+	.parent.a .php a{}
+	.parent.a .php a img{}
+	.parent.a .title{}
+	.parent.a .title h1{}
+	.parent.a .title h1{}
+	.parent.a .field{}
+	.parent.a .field p{}
 ```
 
 ## TODO
@@ -59,7 +55,7 @@ using the plugin directly:
    * branding
 * implement https://ace.c9.io as an editor
 * "Inception Rule" don't go too deep
-* AutoCleaner
+* AutoCleaner, Minimize
 
 
 
