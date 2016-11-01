@@ -8,9 +8,18 @@
    .window {    height: 100%;}
    .window .toolbar {    height: 5%;}
    .window .toolbar .css_selector {    background-color: #5F5D5D;    float: left;    height: 100%;    border: none;    width: 50%;}
-   .window .toolbar button {    background: #ADADAD;    float: left;    border: none;    height: 100%;    width: 50%;}
+   .window .toolbar button {
+         background: #ac7d3e;
+    float: right;
+    border: none;
+    height: 100%;
+    padding: 10px;
+    line-height: 0;
+    color: white;
+   }
    .window .panel_left {    height: 95%;    float: left;    width: 50%;}
-   .window .panel_left textarea {    border: solid 1px #504F4F;    color: #199219;    background: black;    width: 100%;    height: 100%;}
+   .window .panel_left pre{height:100%;}
+   /*.window .panel_left textarea {    border: solid 1px #504F4F;    color: #199219;    background: black;    width: 100%;    height: 100%;}*/
    .window .panel_right {    height: 95%;    float: left;    width: 50%;}
    .window .panel_right pre {    background: #1D1D1D;    height: 100%;    overflow: auto;    color: #E49300;}
    .window .clear {}
@@ -31,11 +40,10 @@
 
    <div class="window">
       <div class="toolbar">
-         <input type="text" class="css_selector" placeholder="Your parent element, can be empty" />
-         <button>Click to get your css code</button>
+         <button>Generate CSS</button>
       </div>
       <div class="panel_left">
-         <textarea placeholder="Paste html here"></textarea>
+         <pre id="editor"></pre>
       </div>
       <div class="panel_right">
          <pre></pre>
@@ -43,30 +51,23 @@
       <div class="clear"></div>
    </div>
 
+   <script src="./src/js/ace/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+   <script>
+      var editor = ace.edit("editor");
+      editor.setTheme("ace/theme/twilight");
+      editor.session.setMode("ace/mode/html");
+   </script>
    <script type="text/javascript">
-
-
 
       function populate_right_panel(css){
          $('.panel_right pre').text(css);
       }
 
-
       $(document).ready(function(){
-
-            $('.toolbar button').click(function(){
-               if( $('.css_selector').val() != '' ) {
-                  //from a selector
-                  dom = $( $('.panel_left textarea').val() ).find($('.css_selector').val());
-               }else{
-                  //everything
-                  dom = $( $('.panel_left textarea').val() );
-               }
+         $('.toolbar button').click(function(){
+            dom = $( editor.getValue() );
             $(dom).cssGenerator({prefer_ids_over_class:false, callback:populate_right_panel});
-
-
-            });
-
+         });
       });
    </script>
 </body>
