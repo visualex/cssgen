@@ -54,7 +54,6 @@ Get this output:
    * save to local
    * keyboard shortcuts
    * branding
-* implement https://ace.c9.io as an editor
 * "Inception Rule" don't go too deep
 * AutoCleaner, Minimize
 * reactivex
