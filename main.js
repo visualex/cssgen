@@ -1,5 +1,7 @@
 const electron = require('electron')
 
+var tidy = require("tidy-html5").tidy_html5
+
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.

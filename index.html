@@ -59,15 +59,22 @@
    </script>
    <script type="text/javascript">
 
+      var tidy = require("tidy-html5").tidy_html5;
+
       function populate_right_panel(css){
          $('.panel_right pre').text(css);
       }
 
       $(document).ready(function(){
+
          $('.toolbar button').click(function(){
-            dom = $( editor.getValue() );
+            tidyHtml = tidy(editor.getValue(), {"indent-spaces": 4});
+            var tidyHtml = tidyHtml.replace(/^[\S\s]*<body[^>]*?>/i, "").replace(/<\/body[\S\s]*$/i, "");
+            editor.setValue(tidyHtml);
+            dom = $( '<div>' + tidyHtml + '</div>' ).children();
             $(dom).cssGenerator({prefer_ids_over_class:false, callback:populate_right_panel});
          });
+
       });
    </script>
 </body>
