@@ -46,6 +46,7 @@ Get this output:
 
 ## TODO
 * some tags cause errors
+* htmltidy
 * form elements cleanup
 * package as node app
    * file import + watch (output change - inspector saves) (local/remote - changes)
@@ -53,7 +54,6 @@ Get this output:
    * save to local
    * keyboard shortcuts
    * branding
-* implement https://ace.c9.io as an editor
 * "Inception Rule" don't go too deep
 * AutoCleaner, Minimize
 * reactivex
