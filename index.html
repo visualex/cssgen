@@ -9,13 +9,14 @@
    .window .toolbar {    height: 5%;}
    .window .toolbar .css_selector {    background-color: #5F5D5D;    float: left;    height: 100%;    border: none;    width: 50%;}
    .window .toolbar button {
-         background: #ac7d3e;
-    float: right;
-    border: none;
-    height: 100%;
-    padding: 10px;
-    line-height: 0;
-    color: white;
+      background: #ac7d3e;
+      float: right;
+      border: none;
+      height: 100%;
+      padding: 10px;
+      line-height: 0;
+      color: white;
+      border-right: solid 1px #212121;
    }
    .window .panel_left {    height: 95%;    float: left;    width: 50%;}
    .window .panel_left pre{height:100%;}
@@ -40,7 +41,8 @@
 
    <div class="window">
       <div class="toolbar">
-         <button>Generate CSS</button>
+         <button class="generate">Generate CSS</button>
+         <button class="open">Open ...</button>
       </div>
       <div class="panel_left">
          <pre id="editor"></pre>
@@ -60,20 +62,54 @@
    <script type="text/javascript">
 
       var tidy = require("tidy-html5").tidy_html5;
+      var app = require('electron').remote;
+      var dialog = app.dialog;
+      var fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
 
-      function populate_right_panel(css){
-         $('.panel_right pre').text(css);
+
+      function cssSetContent(content)
+      {
+         $('.panel_right pre').text(content);
+      }
+
+      function editorSetContent(content)
+      {
+         editor.setValue(content);
+         return content;
+      }
+
+      function editorGetContent()
+      {
+         return editor.getValue();
+      }
+
+      function tidyContent(content)
+      {
+         tidyHtml = tidy(content, {"indent-spaces": 4});
+         return tidyHtml.replace(/^[\S\s]*<body[^>]*?>/i, "").replace(/<\/body[\S\s]*$/i, "");
+      }
+
+      function generateCss()
+      {
+         html = editorSetContent(tidyContent(editorGetContent()));
+         html = $( '<div>' + html + '</div>' ).children();
+         $(html).cssGenerator({prefer_ids_over_class:false, callback:cssSetContent});
+      }
+
+      function openUrl()
+      {
+         url = prompt('URL');
+      }
+
+      function prompt(message)
+      {
+         console.log(message);
       }
 
       $(document).ready(function(){
-
-         $('.toolbar button').click(function(){
-            tidyHtml = tidy(editor.getValue(), {"indent-spaces": 4});
-            var tidyHtml = tidyHtml.replace(/^[\S\s]*<body[^>]*?>/i, "").replace(/<\/body[\S\s]*$/i, "");
-            editor.setValue(tidyHtml);
-            dom = $( '<div>' + tidyHtml + '</div>' ).children();
-            $(dom).cssGenerator({prefer_ids_over_class:false, callback:populate_right_panel});
-         });
+         // UI events
+         $('.toolbar button.generate').click(function(){ generateCss(); });
+         $('.toolbar button.open').click(function(){ openUrl(); });
 
       });
    </script>
