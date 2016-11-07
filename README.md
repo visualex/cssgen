@@ -47,7 +47,7 @@ Get this output:
 ## TODO
 * some tags cause errors
 * form elements cleanup
-* package as node app
+* node
    * file import + watch (output change - inspector saves) (local/remote - changes)
    * url "watching"
    * save to local
