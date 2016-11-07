@@ -1,0 +1,17 @@
+body,html{height: 100%;background: #212121;overflow:hidden;}
+.window { height: 100%;}
+.window .toolbar {height: 35px;border-bottom: solid 1px #313131;}
+.window .toolbar .css_selector { background-color: #5F5D5D; float: left; height: 100%; border: none; width: 50%;}
+.window .toolbar button {background: #ac7d3e;float: right;border: none;height: 100%;padding: 10px;line-height: 0;color: white;border-right: solid 1px #212121;}
+.window .panel_left { height: 95%; float: left; width: 50%;}
+.window .panel_left pre{height:100%;margin-top: 0;}
+.window .panel_right { height: 95%; float: left; width: 50%;}
+.window .panel_right pre {background: #1D1D1D;height: 100%;overflow: auto;color: #e09735;margin-top: 0;padding: 20px;}
+.window .clear {  }
+
+.window .prompt { display:none; position: absolute; top: 33%; left: 50%; background: #141414; z-index: 111; width: 50%; margin-left: -25%; text-align: center; min-height: 10%; padding: 20px; border: solid 1px #1d1d1d; box-shadow: 0 0 10px 0px #141414; }
+.window .prompt .title { font-size: 1.3em; font-family: sans-serif; color: #3c3c3c; margin-bottom: 10px; }
+.window .prompt .input { margin-bottom: 20px; }
+.window .prompt .input input { border: none; width: 100%; font-size: 1.6em; background: #171717; outline: none; color: #ac7d3e; border-bottom: solid 1px #1b1b1b; }
+.window .prompt .buttons {  }
+.window .prompt .buttons button {border: none;background: #ac7d3e;outline: none;}

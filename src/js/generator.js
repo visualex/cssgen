@@ -88,7 +88,7 @@
       });
 
       //your css
-      final_css =  unique(css).join("{}\n")+'{}';
+      final_css =  unique(css).join("{ }\n")+'{ }';
       settings.callback(final_css);
    };
 })( jQuery );
