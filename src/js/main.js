@@ -43,12 +43,28 @@ function generateCss()
 
 function openUrl()
 {
-   url = prompt('URL');
+   url = prompt('URL', receiveUrl);
 }
 
-function prompt(message)
+function receiveUrl(url)
 {
-   console.log(message);
+   $.get( url, function( data ) {
+      editorSetContent(data);
+      generateCss();
+   });
+}
+
+function prompt(message, callback)
+{
+   $('.prompt').show();
+   $('.prompt .title').text(message);
+   $('.prompt button').text('ok');
+   $('.prompt button').click(function(){
+      callback($('.prompt .input input').val());
+      $('.prompt').hide();
+      $('.prompt .title').text('');
+      $('.prompt button').text('');
+   });
 }
 
 $(document).ready(function(){
