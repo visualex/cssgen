@@ -43,12 +43,27 @@ func main() {
       return
    }
 
-   // TODO
-   css := ""
+   // todo
+   // var css map[string]string
+
    z := html.NewTokenizer(resp.Body)
    for {
       tt := z.Next()
-      fmt.Printf("%v\n", tt);
+
+      if tt == html.StartTagToken {
+         tn, _ := z.TagName()
+         tagName := string(tn);
+         fmt.Printf("%v\n", tagName);
+      }
+
+      if tt == html.EndTagToken {
+
+      }
+
+      if tt == html.SelfClosingTagToken {
+
+      }
+
       // ErrorToken  error during tokenization (or end of document)
       // TextToken   text node (contents of an element)
       // StartTagToken  example <a>
@@ -59,13 +74,11 @@ func main() {
       if tt == html.ErrorToken {
          return
       }
-
-
    }
    resp.Body.Close()
 
-   fmt.Println(css);
-
-
+   finalCss := ""
+   // todo
+   fmt.Println(finalCss);
 
 }
