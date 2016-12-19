@@ -11,13 +11,22 @@ import (
     "golang.org/x/net/html"
 )
 
-func addTag (m map[int]string) string {
+
+func addTag(m map[int]string) string {
    s := "";
    j := len(m)
    for i := 0; i < j; i++ {
       s = s + " " + string(m[i])
    }
    return s
+}
+
+func isSelfClosing(tagName string) bool {
+   // some definitions
+   // self closing tags:
+   // selfClosingTags := []string{"area", "base", "br", "col", "command", "embed", "hr", "img", "input", "keygen", "link", "meta", "param", "source", "track", "wbr"}
+   // todo html.SelfClosingTagToken does not recognize unclosed tags: <img> or <hr>, use selfClosingTags
+   return false
 }
 
 func main() {
@@ -54,7 +63,8 @@ func main() {
    for {
       tt := z.Next()
 
-      if tt == html.StartTagToken {
+
+      if tt == html.StartTagToken || tt == html.SelfClosingTagToken {
          tn, _ := z.TagName()
          tagName := string(tn);
          if tagName == "body" || foundBodyTag {
@@ -63,15 +73,7 @@ func main() {
          }
       }
 
-      if tt == html.SelfClosingTagToken {
-         tn, _ := z.TagName()
-         tagName := string(tn);
-         css[len(css)] = tagName
-         finalCss = finalCss + addTag(css) + " { } \n"
-         delete(css, len(css)-1)
-      }
-
-      if tt == html.EndTagToken {
+      if foundBodyTag && (tt == html.EndTagToken || tt == html.SelfClosingTagToken) {
          finalCss = finalCss + addTag(css) + " { } \n"
          delete(css, len(css)-1)
       }
