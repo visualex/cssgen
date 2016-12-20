@@ -45,17 +45,12 @@ Get this output:
 ```
 
 ## TODO
-* some tags cause errors
-* form elements cleanup
-* node
-   * file import + watch (output change - inspector saves) (local/remote - changes)
-   * url "watching"
-   * save to local
-   * keyboard shortcuts
-   * branding
-* "Inception Rule" don't go too deep
-* AutoCleaner, Minimize
-* reactivex
+* porting to go
+* flag for css style ignore 
+* url flag, move to first parameter, rest as flags
+* Inception Rule,
+* remove duplicates
+* keep jquery only as legacy
 
 
 
