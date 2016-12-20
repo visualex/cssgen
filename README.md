@@ -3,7 +3,7 @@ css generator
 
 Tired of writing CSS or SASS?
 
-Generate clean CSS markup for your App based on the HTML markup.
+Generate clean CSS markup for your App based on the local or remote HTML markup.
 
 
 
@@ -43,16 +43,6 @@ Get this output:
 	.parent.a .field{}
 	.parent.a .field p{}
 ```
-
-## TODO
-* porting to go
-* flag for css style ignore 
-* url flag, move to first parameter, rest as flags
-* Inception Rule,
-* remove duplicates
-* keep jquery only as legacy
-
-
 
 
 
