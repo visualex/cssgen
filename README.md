@@ -1,9 +1,9 @@
-css generator
+cssgen
 ====================
 
-Tired of writing CSS or SASS?
+## cssgen is a css generator from existing markup
 
-Generate clean CSS markup for your App based on the HTML markup.
+This tool is built with the idea of not having to write CSS selectors.
 
 
 
