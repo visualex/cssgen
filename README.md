@@ -3,8 +3,9 @@ cssgen
 
 ## cssgen is a css generator from existing markup
 
-This tool is built with the idea of not having to write CSS selectors.
+Don't write CSS selectors.
 
+Generate clean CSS selector markup documents for your App based on HTML markup.
 
 
 ```
@@ -31,7 +32,7 @@ For the following markup:
 	</div>
 ```
 
-Get this output: 
+Get this output:
 ```CSS
 	.parent.a{}
 	.parent.a .php{}
@@ -43,21 +44,6 @@ Get this output:
 	.parent.a .field{}
 	.parent.a .field p{}
 ```
-
-## TODO
-* some tags cause errors
-* form elements cleanup
-* node
-   * file import + watch (output change - inspector saves) (local/remote - changes)
-   * url "watching"
-   * save to local
-   * keyboard shortcuts
-   * branding
-* "Inception Rule" don't go too deep
-* AutoCleaner, Minimize
-* reactivex
-
-
 
 
 
