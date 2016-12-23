@@ -22,10 +22,11 @@ func addTag(m map[int]string) string {
 }
 
 func isSelfClosing(tagName string) bool {
-   // some definitions
-   // self closing tags:
-   // selfClosingTags := []string{"area", "base", "br", "col", "command", "embed", "hr", "img", "input", "keygen", "link", "meta", "param", "source", "track", "wbr"}
    // todo html.SelfClosingTagToken does not recognize unclosed tags: <img> or <hr>, use selfClosingTags
+   switch tagName {
+   case "area", "base", "br", "col", "command", "embed", "hr", "img", "input", "keygen", "link", "meta", "param", "source", "track", "wbr":
+      return true
+   }
    return false
 }
 
@@ -49,7 +50,8 @@ func main() {
    defer resp.Body.Close()
 
    css := make(map[int]string)
-   foundBodyTag := false;
+   foundBodyTag := false
+   unclosedTagFound := false
    finalCss := ""
 
    // ErrorToken  error during tokenization (or end of document)
@@ -67,13 +69,18 @@ func main() {
       if tt == html.StartTagToken || tt == html.SelfClosingTagToken {
          tn, _ := z.TagName()
          tagName := string(tn);
+         if isSelfClosing(tagName) {
+            unclosedTagFound = true
+         } else {
+            unclosedTagFound = false
+         }
          if tagName == "body" || foundBodyTag {
             foundBodyTag = true
             css[len(css)] = tagName
          }
       }
 
-      if foundBodyTag && (tt == html.EndTagToken || tt == html.SelfClosingTagToken) {
+      if foundBodyTag && (tt == html.EndTagToken || tt == html.SelfClosingTagToken || unclosedTagFound) {
          finalCss = finalCss + addTag(css) + " { } \n"
          delete(css, len(css)-1)
       }
