@@ -12,6 +12,16 @@ import (
 )
 
 
+// func getClass(t html.Token) (ok bool, class string) {
+//    for _, a := range t.Attr {
+//       if a.Key == "class" {
+//          class = a.Val
+//          ok = true
+//       }
+//    }
+//    return
+// }
+
 func addTag(m map[int]string) string {
    s := "";
    j := len(m)
@@ -22,7 +32,7 @@ func addTag(m map[int]string) string {
 }
 
 func isSelfClosing(tagName string) bool {
-   // todo html.SelfClosingTagToken does not recognize unclosed tags: <img> or <hr>, use selfClosingTags
+   // TODO submit pr to golang.org/x/net/html to avoid using this
    switch tagName {
    case "area", "base", "br", "col", "command", "embed", "hr", "img", "input", "keygen", "link", "meta", "param", "source", "track", "wbr":
       return true
@@ -51,7 +61,6 @@ func main() {
 
    css := make(map[int]string)
    foundBodyTag := false
-   unclosedTagFound := false
    finalCss := ""
 
    // ErrorToken  error during tokenization (or end of document)
@@ -64,7 +73,7 @@ func main() {
    z := html.NewTokenizer(resp.Body)
    for {
       tt := z.Next()
-
+      unclosedTagFound := false
 
       if tt == html.StartTagToken || tt == html.SelfClosingTagToken {
          tn, _ := z.TagName()
