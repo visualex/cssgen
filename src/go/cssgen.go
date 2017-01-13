@@ -12,15 +12,30 @@ import (
 )
 
 
-// func getClass(t html.Token) (ok bool, class string) {
-//    for _, a := range t.Attr {
-//       if a.Key == "class" {
-//          class = a.Val
-//          ok = true
-//       }
-//    }
-//    return
-// }
+func getAttribute(t html.Token, attr string) (ok bool, res string) {
+   for _, a := range t.Attr {
+      if a.Key == attr {
+         res = a.Val
+         ok = true
+         return
+      }
+   }
+   return
+}
+
+func getAnyAttributesOrTagName(t html.Token, tn string) (res string) {
+   // prefer id over class over tag name
+   ok, id := getAttribute(t, "id")
+   if ok {
+      return id
+   }
+   ok, class := getAttribute(t, "class")
+   if ok {
+      return class
+   }
+
+   return tn
+}
 
 func addTag(m map[int]string) string {
    s := "";
@@ -73,6 +88,8 @@ func main() {
    z := html.NewTokenizer(resp.Body)
    for {
       tt := z.Next()
+
+      //
       unclosedTagFound := false
 
       if tt == html.StartTagToken || tt == html.SelfClosingTagToken {
@@ -86,6 +103,8 @@ func main() {
          if tagName == "body" || foundBodyTag {
             foundBodyTag = true
             css[len(css)] = tagName
+            t := z.Token()
+            fmt.Println(getAnyAttributesOrTagName(t, tagName))
          }
       }
 
