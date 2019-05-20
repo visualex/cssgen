@@ -56,7 +56,7 @@
       }
 
       iterator = function(base, element) {
-         console.log( 'children in '+ get_selector(element) + ' ' + element.children().length )
+         // console.log( 'children in '+ get_selector(element) + ' ' + element.children().length )
          jQuery.each(element.children(), function(i,v) {
             current = jQuery(v);
             new_base = get_selector(current);
