@@ -7,6 +7,8 @@ Don't write CSS selectors.
 
 Generate clean CSS selector markup documents for your App based on HTML markup.
 
+[View this readme on github.io](https://visualex.github.io/cssgen/)
+
 ### Easiest way to use CSS Generator: 
 
 Add [this link](javascript:function cssGeninjectScript(e){return new Promise((t,n)=>{const c=document.createElement("script");c.async=!0,c.src=e,c.addEventListener("load",t),c.addEventListener("error",()=>n("Error loading script.")),c.addEventListener("abort",()=>n("Script loading aborted.")),document.head.appendChild(c)})}cssGeninjectScript("https://code.jquery.com/jquery-3.4.1.min.js").then(()=>{cssGeninjectScript("https://visualex.github.io/cssgen/src/js/cssgen.js").then(()=>{$("body").cssGenerator()}).catch(e=>{console.log("could not load cssgen")})}).catch(e=>{console.log("could not load jquery")});) 
